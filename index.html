@@ -21,7 +21,13 @@ const cities =[];
 
 fetch(endpoint)
     .then(blob => blob.json()) // converts to json
-    .then(blob => console.log(blob));
+    .then(data => cities.push(...data)) // ... gives you SPREAD
+
+function findMatches(wordToMatch, cities) {
+    return cities.filter(place => {
+    // Here we need to figure out if the city or state matched what was searched
+    });
+}
 
 </script>
 </body>
