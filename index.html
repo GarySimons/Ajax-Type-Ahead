@@ -31,6 +31,16 @@ function findMatches(wordToMatch, cities) {
     });
 }
 
+function displayMatches() {
+    console.log(this.value);
+}
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches); // changes when type in, but need to click out of box to work
+searchInput.addEventListener('keyup', displayMatches); // changes on key up
+
 </script>
 </body>
 </html>
