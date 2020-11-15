@@ -26,14 +26,21 @@ fetch(endpoint)
 function findMatches(wordToMatch, cities) {
     return cities.filter(place => {
     // Here we need to figure out if the city or state matched what was searched
-    const regex = new RegExp(wordToMatch, 'gi'); // g is (whole array) i is insensitive to upper or lower case
+    const regex = new RegExp(wordToMatch, 'gi'); // g is global (whole array) i is insensitive to upper or lower case
     return place.city.match(regex) || place.state.match(regex) // match city OR state
     });
 }
 
 function displayMatches() {
     const matchArray = findMatches(this.value, cities); // takes the values from findMatches and creates a new const matchArray
-    console.log(matchArray);
+    const html = matchArray.map(place => {
+        return `
+            <li>
+                <span class="name">${place.city}, ${place.state}</span>
+                <span class="popilation">${place.population}</span>
+            </li>
+        `;
+    });
 }
 
 const searchInput = document.querySelector('.search');
