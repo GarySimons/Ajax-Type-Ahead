@@ -40,7 +40,8 @@ function displayMatches() {
                 <span class="popilation">${place.population}</span>
             </li>
         `;
-    });
+    }).join(''); // turns map from an array will multiple items into 1 string
+    suggestions.innerHTML = html;
 }
 
 const searchInput = document.querySelector('.search');
