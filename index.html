@@ -31,15 +31,20 @@ function findMatches(wordToMatch, cities) {
     });
 }
 
+function numbersWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); // gives a comma in the number to make it read easier
+}
+
 function displayMatches() {
     const matchArray = findMatches(this.value, cities); // takes the values from findMatches and creates a new const matchArray
     const html = matchArray.map(place => {
         const regex = new RegExp(this.value, 'gi'); // finds word typed in 
         const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`); // replaces word typed in with highlighted span
+        const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`); // replaces word typed in with highlighted span
         return `
             <li>
-                <span class="name">${place.city}, ${place.state}</span>
-                <span class="popilation">${place.population}</span>
+                <span class="name">${cityName}, ${stateName}</span>
+                <span class="popilation">${numbersWithCommas(place.population)}</span>
             </li>
         `;
     }).join(''); // turns map from an array will multiple items into 1 string
